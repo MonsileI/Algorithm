@@ -19,7 +19,7 @@ public class bj_3197_백조의호수_Platinum_5 {
         int pi =-1;int pj=-1;
         int si = 0;int sj = 0;
         waterQueue = new ArrayDeque<>();
-        swanQueue = new ArrayDeque<>();comm
+        swanQueue = new ArrayDeque<>();
         map = new char[N][M];
         visited = new boolean[N][M];
         for(int i=0;i<N;i++){
@@ -47,7 +47,6 @@ public class bj_3197_백조의호수_Platinum_5 {
             if(searchSwan(pi,pj)) break;
             melt();
             ans++;
-
         }
         System.out.println(ans);
     }
