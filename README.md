@@ -941,3 +941,9 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 
 <!--구분선-->
 ---
+<details>
+<summary>4. 문자열</summary>
+<h3>
+</h3>
+
+</details>
