@@ -1,6 +1,7 @@
-package 전체문제.Third_2023_12_14;
-import java.util.*;
-import java.io.*;
+package 문자열.KMP;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 public class bj_1786_찾기_Platinum_5 {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,7 +18,6 @@ public class bj_1786_찾기_Platinum_5 {
         int cnt = 0;
         j = 0;
         StringBuilder sb = new StringBuilder();
-        //A B A B A B A B A C || A B A B A C [0,0,1,2,3,0]
         for(int i=0;i<sLen;i++){
             while(0 < j && pattern.charAt(j)!=str.charAt(i)) j = table[j-1];
             if(pattern.charAt(j)==str.charAt(i)){

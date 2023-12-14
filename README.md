@@ -817,12 +817,12 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         <div>
         정의 : 위상 정렬(topological sorting)은 유향 그래프의 꼭짓점들(vertex)을 변의 방향을 거스르지 않도록 나열하는 것을 의미한다. 예시를 들자면, <br>과자, 햄버거, 수박, 라면<br> 
         이렇게 네가지 음식이 있을 때, 과자는 햄버거보다 먼저 먹어야 하고, 라면은 수박보다 먼저 먹어야 한다고 가정해 보자.<br>
-        1. 과자 → 햄버거 → 수박 → 라면 <br>
-        2. 과자 → 햄버거 → 라면 → 수박 <br>
-        3. 햄버거 → 과자 → 수박 → 라면 <br>
-        4. 햄버거 → 과자 → 라면 → 수박 <br>
-        5. 수박 → 라면 → 과자 → 햄버거 <br>
-        6.라면 → 수박 → 과자 → 햄버거 <br><br>
+        1. 과자 → 햄버거 → 라면 → 수박 <br>
+        2. 과자 → 라면 → 수박 → 햄버거 <br>
+        3. 라면 → 수박 → 과자 → 햄버거 <br>
+        4. 과자 → 라면 → 햄버거 → 수박 <br>
+        5. 라면 → 과자 → 햄버거 → 수박 <br>
+        6. 라면 → 과자 → 수박 → 햄버거 <br><br>
         이렇게 여섯가지 경우의 수가 나올것이다. 이걸 가능하게 해주는 알고리즘이 위성정렬 알고리즘이다!
         </div>
         <div></div>
@@ -944,7 +944,159 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <details>
 <summary>4. 문자열</summary>
 <h3>
-d
+문자열 알고리즘은 다양하다. 여기에선 LCS , KMP , Trie 알고리즘을 설명할 것이다.
 </h3>
+
+<details>
+<summary>LCS(Longest Common Subsequence)</summary>
+        <div>
+        정의 : LCS 알고리즘은 DP(Dynamic Programming)를 기반으로 하며, 두 개의 문자열에서 공통으로 포함된 가장 긴 부분열을 찾는 알고리즘
+        </div>
+        <div>
+        시간복잡도 : O(NM) , (두 문자열 길이 N,M이라고 가정할 때) 
+        </div>
+        <br/>
+        <div>
+        A B C D E F 와 A B C A D 라는 문자열 A B가 있다고 가정해보자.        
+        </div>
+
+           A B C D E F
+         A 1 1 1 1 1 1
+         B 1 2 2 2 2 2
+         C 1 2 3 3 3 3 
+         A 1 2 3 3 3 3
+         D 1 2 3 4 4 4
+
+가로 세로로 문자열을 배치한 다음, 각각 가로 세로가 일치한다면, 그전까지 일치하던 값의 +1이 된다.<br/>
+가로축의 A B C D E F 와 세로축의 A를 비교했을때, 전부 1이 될 것이다.<br>
+가로축의 A B C D E F 와 세로축 A B를 비교하면, 처음엔 1이고 그다음에 A B 가 일치함으로 2전부 2로 채워진다.<br>
+가로축의 A B C D E F 와 세로축 A B C 를 비교하면, 3으로 채워진다.<br>
+가로축의 A B C D E F 와 세로축 A B C A 'D'까지 가면, D로 인해 A B C D 라는 가장 긴 4라는 '최장 공통 부분열'을 구할 수 있다.
+
+<br/>
+
+! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
+<a href="https://www.acmicpc.net/problem/9251">문제</a><br> 
+<a href="https://blog.naver.com/hansaem900d/223292673112">알고리즘 설명 및 풀이</a> 
+
+    import java.io.BufferedReader;
+    import java.io.InputStreamReader;
+
+    public class Main {
+        public static void main(String[] args) throws Exception{
+            BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+            String first = br.readLine();
+            String second = br.readLine();
+            int fSize= first.length();
+            int sSize = second.length();
+            int[][]lcs = new int[fSize+1][sSize+1];
+            for(int i=1;i<fSize+1;i++){
+                char f = first.charAt(i-1);
+                for(int j=1;j<sSize+1;j++){
+                    char s = second.charAt(j-1);
+                    if(f==s) lcs[i][j] = lcs[i-1][j-1]+1;
+                    else lcs[i][j] = Math.max(lcs[i-1][j],lcs[i][j-1]);
+                }
+            }
+            System.out.println(lcs[fSize][sSize]);
+        }
+    }
+
+
+
+😀문자열 알고리즘은 시간복잡도를 효율적으로 개선하기 위한 알고리즘들이 많다! :)
+</details>
+
+<details>
+<summary>KMP(Longest Common Subsequence)</summary>
+        <div>
+        정의 :
+        KMP(Knuth-Morris-Pratt) 알고리즘은 문자열 검색을 위한 효율적인 알고리즘으로,1977년에 Donald Knuth, Vaughan Pratt, James H. Morris에 의해 개발되었다. 문자열의 패턴을 찾는 알고리즘으로 접두사, 접미사를 활용한다.
+        </div>
+        <div>
+        시간복잡도 : O(N+M) , (두 문자열 길이 N,M이라고 가정할 때) 
+        </div>
+        <br/>
+        <div>
+        A B A B A B C 와 A B A B A C 라는 문자열 A B가 있다고 가정해보자. A에 B패턴이 있는지, 몇개나 있는지 확인할 때 KMP를 이용한다.<br>
+        여기서 A B A B A C 라는 패턴 관련 table 설계가  필요하다.         
+        </div>
+
+        A B A B A C 를 테이블로 설계하자면,
+        
+                          접두사이자 접미사인 최대 문자열 
+        A                             없음
+        A B                           없음
+        A B A                          A    
+        A B A B                        AB
+        A B A B C                     없음
+
+        즉, 테이블은 [0,0,1,2,0]이 된다.
+이 테이블을 이용해서 설계하면 시간복잡도를 줄일 수 있다.
+
+    문자열 : A B A B A B C
+    패턴 : A B A B C [0,0,1,2,0]
+    
+    1. 문자열을 기준 loop를 돌며, 문자열 index와 패턴 index를 비교하고, 같으면 패턴 index를 ++해준다.
+    
+    2. A B A B 까지는 맞지만, 문자열 index 4인 'A'가 패턴 index 4인 'C'가 아니기 때문에 일치하지 않는다. (여기까지 패턴 index는 조건 1에 의해 4가 된다.)
+    
+    3. 두 index 값이 다르기 때문에 패턴의 index값을 table[index-1]값으로 갱신, 즉 index가 4였기 때문에 테이블의 3 값인 2 값으로 갱신된다.
+    
+    4. 이때, 테이블에 들어있는 값이 일치하거나 패턴 index가 0보다 클때까지 (3번)을 반복하여 가능한 패턴을 찾아준다. 패턴의 2값은 'A'이다. 패턴'A'와 문자열의 4번째 값 'A'가 같기 때문에 한번의 반복문으로 찾을 수 있다. 
+    
+    5. 패턴 2값은 'A'였고, 문자열 4번째 'A'는 일치하기 때문에 패턴 index를 +1 해준다. (index는 현재 3)
+
+    6. 다음 문자열 index값인 5는 'B'이다. 현재 패턴 index인 3은 'B'이다. 일치하기 떄문에 패턴 index +1 해준다.
+
+    7. 다음 문자열 index값인 6은 'C'이다. 패턴 index 값인 4는 'C'이다. 일치한다. 그리고 현재 패텬 index는 4, 즉 패턴 끝까지 도달했기 때문에 문자열은 패턴을 포함한다고 볼 수 있다.
+
+최대한 상세하게 작성하려고 했지만, 링크에 좀 더 자세히 그림과 함께 설명해놓았다.
+
+<br/>
+
+! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
+<a href="https://www.acmicpc.net/problem/1786">문제</a><br> 
+<a href="https://blog.naver.com/hansaem900d/223292789507">알고리즘 설명 및 풀이</a> 
+
+    import java.util.*;
+    import java.io.*;
+    public class Main {
+        public static void main(String[] args) throws Exception{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String str = br.readLine();
+            String pattern = br.readLine();
+            int sLen = str.length();
+            int pLen = pattern.length();
+            int[]table = new int[pLen];
+            int j = 0; //j = 접두사, i = 접미사
+            for(int i=1;i<pLen;i++){
+                while(0<j && pattern.charAt(j)!=pattern.charAt(i)) j = table[j-1];
+                if(pattern.charAt(j)==pattern.charAt(i)) table[i] = ++j;
+            }
+            int cnt = 0;
+            j = 0;
+            StringBuilder sb = new StringBuilder();
+            //A B A B A B A B A C || A B A B A C [0,0,1,2,3,0]
+            for(int i=0;i<sLen;i++){
+                while(0 < j && pattern.charAt(j)!=str.charAt(i)) j = table[j-1];
+                if(pattern.charAt(j)==str.charAt(i)){
+                    if(j==pLen-1){
+                        cnt++;
+                        sb.append((i-j+1)+" ");
+                        j = table[j];
+                    }else j++;
+                }
+            }
+            sb.insert(0,cnt+"\n");
+            System.out.println(sb.toString());
+        }
+    }
+
+
+
+
+😀KMP 알고리즘은 천천히 코드를 보며 흐름을 따라가고, 그림을 그려볼 필요가 있다 :)
+</details>
 
 </details>
