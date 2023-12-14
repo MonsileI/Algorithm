@@ -1132,72 +1132,65 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <a href="https://blog.naver.com/hansaem900d/223216769925">알고리즘 설명 및 풀이</a> 
 
 
-    import java.util.*;
+
     import java.io.*;
+    import java.util.*;
 
     public class Main {
 
-        static class TrieNode{
+    static class TrieNode{
 
-            public TrieNode() {}
-            boolean check;
-            Map<Character,TrieNode> childNode = new HashMap<>();
+        public TrieNode() {}
 
-            public void insertNode(String str){
-                TrieNode trieNode = this;
-                for(int i=0;i<str.length();i++){
-                    char ch = str.charAt(i);
-                    trieNode.childNode.putIfAbsent(ch,new TrieNode());
-                    trieNode = trieNode.childNode.get(ch);
-                    if(i==str.length()-1) {
-                        trieNode.check = true;
-                        return;
-                    }
-                }
-            }
-            public boolean isContains(String str){
-                TrieNode trieNode = this;
-                for(int i=0;i<str.length();i++){
-                    char ch = str.charAt(i);
-                    TrieNode thisNode = trieNode.childNode.get(ch);
-                    trieNode = thisNode;
-                }
-                if(trieNode.check){
-                    if(trieNode.childNode.isEmpty()) return false;
-                }
-                return true;
+        Map<Character,TrieNode> childNode = new HashMap<>();
+
+        public void insertNode(String str){
+            TrieNode trieNode = this;
+            for(int i=0;i<str.length();i++){
+                char ch = str.charAt(i);
+                trieNode.childNode.putIfAbsent(ch,new TrieNode());
+                trieNode = trieNode.childNode.get(ch);
             }
         }
-
-
-        public static void main(String[] args) throws Exception {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            int TC = Integer.parseInt(br.readLine());
-            StringBuilder sb = new StringBuilder();
-            for(int t=0;t<TC;t++){
-            TrieNode trieNode = new TrieNode();
-            List<String >list = new ArrayList<>();
-                int N = Integer.parseInt(br.readLine());
-                for(int i=0;i<N;i++){
-                    String str = br.readLine();
-                    list.add(str);
-                    trieNode.insertNode(str);
-                }
-                boolean flag = true;
-                for(String str : list){
-                    if(trieNode.isContains(str)) {
-                        flag= false;
-                        break;
-                    }
-                }
-                sb.append(flag ? "YES\n" : "NO\n");
+        public boolean isContains(String str){
+            TrieNode trieNode = this;
+            for(int i=0;i<str.length();i++){
+                char ch = str.charAt(i);
+                TrieNode thisNode = trieNode.childNode.get(ch);
+                if(thisNode.childNode.isEmpty()) return false;
+                trieNode = thisNode;
             }
-            System.out.println(sb.toString());
+
+            return true;
         }
     }
 
 
-
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int TC = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        for(int t=0;t<TC;t++){
+        TrieNode trieNode = new TrieNode();
+        List<String >list = new ArrayList<>();
+            int N = Integer.parseInt(br.readLine());
+            for(int i=0;i<N;i++){
+                String str = br.readLine();
+                list.add(str);
+                trieNode.insertNode(str);
+            }
+            boolean flag = true;
+            for(String str : list){
+                if(trieNode.isContains(str)) {
+                    flag= false;
+                    break;
+                }
+            }
+            sb.append(flag ? "YES\n" : "NO\n");
+        }
+        System.out.println(sb.toString());
+      }
+    }
 
 
 😀 Trie 알고리즘은 검색에 대한 인사이트를 얻을 수 있는 아주 좋은 알고리즘이다 :)

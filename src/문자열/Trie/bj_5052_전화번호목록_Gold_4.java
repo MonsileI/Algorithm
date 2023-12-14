@@ -12,7 +12,7 @@ public class bj_5052_전화번호목록_Gold_4 {
     static class TrieNode{
 
         public TrieNode() {}
-        boolean check;
+
         Map<Character,TrieNode> childNode = new HashMap<>();
 
         public void insertNode(String str){
@@ -21,10 +21,6 @@ public class bj_5052_전화번호목록_Gold_4 {
                 char ch = str.charAt(i);
                 trieNode.childNode.putIfAbsent(ch,new TrieNode());
                 trieNode = trieNode.childNode.get(ch);
-                if(i==str.length()-1) {
-                    trieNode.check = true;
-                    return;
-                }
             }
         }
         public boolean isContains(String str){
@@ -32,11 +28,10 @@ public class bj_5052_전화번호목록_Gold_4 {
             for(int i=0;i<str.length();i++){
                 char ch = str.charAt(i);
                 TrieNode thisNode = trieNode.childNode.get(ch);
+                if(thisNode.childNode.isEmpty()) return false;
                 trieNode = thisNode;
             }
-            if(trieNode.check){
-                if(trieNode.childNode.isEmpty()) return false;
-            }
+
             return true;
         }
     }
