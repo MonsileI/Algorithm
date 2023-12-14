@@ -1099,4 +1099,111 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 😀KMP 알고리즘은 천천히 코드를 보며 흐름을 따라가고, 그림을 그려볼 필요가 있다 :)
 </details>
 
+<details>
+<summary>Trie</summary>
+        <div>
+        정의 :
+       Trie(트라이)는 검색 트리의 일종으로, 동적인 집합이나 연관 배열을 표현하는 데 사용되는 트리 자료 구조이다. 주로 문자열 검색에 많이 활용되며, 각 노드는 문자나 키의 일부를 나타낸다. Trie는 각 노드에서의 문자열의 공통 접두어를 효과적으로 저장하므로, 검색 및 삽입 연산이 빠르다.
+        </div>
+        <div>
+        시간복잡도 :&ensp;삽입(Insertion): O(M)<br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;검색(Search): O(M)<br>
+         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;삭제(Deletion): O(M)입니다.
+        </div>
+        <br/>
+        <div>
+        알파벳이라고 가정한다면, List를 활용하는 방법도 있지만, 여기선 Map을 활용할 것이다.<br>
+        정말 간단하게 말해서, 각 알파벳 별 'abc...'의 맵을 만들고, 만약 문자열이 ab abc ad ade af 이렇게 있다면,<br>
+        </div>
+        
+                a
+              / | \
+             b  d  f
+            /   |  
+           c    e    
+
+이런식으로 각각 알파벳에 map이 구성되고, 그 map에 하위 map이 구성되는 구조로 설계하는 것이다.<br> 
+최대한 상세하게 작성하려고 했지만, 링크에 좀 더 자세히 그림과 함께 설명해놓았다.
+
+<br/>
+
+! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
+<a href="
+https://www.acmicpc.net/problem/5052">문제</a><br> 
+<a href="https://blog.naver.com/hansaem900d/223216769925">알고리즘 설명 및 풀이</a> 
+
+
+    import java.util.*;
+    import java.io.*;
+
+    public class Main {
+
+        static class TrieNode{
+
+            public TrieNode() {}
+            boolean check;
+            Map<Character,TrieNode> childNode = new HashMap<>();
+
+            public void insertNode(String str){
+                TrieNode trieNode = this;
+                for(int i=0;i<str.length();i++){
+                    char ch = str.charAt(i);
+                    trieNode.childNode.putIfAbsent(ch,new TrieNode());
+                    trieNode = trieNode.childNode.get(ch);
+                    if(i==str.length()-1) {
+                        trieNode.check = true;
+                        return;
+                    }
+                }
+            }
+            public boolean isContains(String str){
+                TrieNode trieNode = this;
+                for(int i=0;i<str.length();i++){
+                    char ch = str.charAt(i);
+                    TrieNode thisNode = trieNode.childNode.get(ch);
+                    trieNode = thisNode;
+                }
+                if(trieNode.check){
+                    if(trieNode.childNode.isEmpty()) return false;
+                }
+                return true;
+            }
+        }
+
+
+        public static void main(String[] args) throws Exception {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            int TC = Integer.parseInt(br.readLine());
+            StringBuilder sb = new StringBuilder();
+            for(int t=0;t<TC;t++){
+            TrieNode trieNode = new TrieNode();
+            List<String >list = new ArrayList<>();
+                int N = Integer.parseInt(br.readLine());
+                for(int i=0;i<N;i++){
+                    String str = br.readLine();
+                    list.add(str);
+                    trieNode.insertNode(str);
+                }
+                boolean flag = true;
+                for(String str : list){
+                    if(trieNode.isContains(str)) {
+                        flag= false;
+                        break;
+                    }
+                }
+                sb.append(flag ? "YES\n" : "NO\n");
+            }
+            System.out.println(sb.toString());
+        }
+    }
+
+
+
+
+
+😀 Trie 알고리즘은 검색에 대한 인사이트를 얻을 수 있는 아주 좋은 알고리즘이다 :)
 </details>
+</details>
+
+<!--구분선-->
+---
