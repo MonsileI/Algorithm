@@ -1128,8 +1128,7 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <br/>
 
 ! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
-<a href="
-https://www.acmicpc.net/problem/5052">문제</a><br> 
+<a href="https://www.acmicpc.net/problem/5052">문제</a><br> 
 <a href="https://blog.naver.com/hansaem900d/223216769925">알고리즘 설명 및 풀이</a> 
 
 
