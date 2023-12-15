@@ -81,7 +81,7 @@
 8. 트리
    - LCA
 9. 비트마스킹
-10. 구현
+
 
 ---
 
@@ -1456,3 +1456,225 @@ Bottom Up 방식이 Top Down 방식에 비해 갖는 이점
 </details>
 
 ## <!--구분선-->
+
+<details>
+<summary>6. 이진탐색(Binary Search)</summary>
+<h3>
+이진탐색(Binary Search)은 정렬된 배열 또는 리스트에서 특정 항목을 찾는 알고리즘이다. 이 알고리즘은 배열을 반으로 나누어 찾고자 하는 항목이 있는 부분을 결정하고, 반으로 나눈 부분에서 다시 검색을 반복하는 방식으로 동작한다.
+</h3>
+시간복잡도 : O(LogN);
+<br>
+이진탐색의 가장 큰 장점은 빠른 속도로 탐색할 수 있다는 것이다.<br>
+만약 [1,2,3,4,10,15,20,25] 이라는 배열이 있고, 여기서 '3'이라는 숫자의 개수를 찾는다고 해보자<br>
+
+    int[]arr = {1,2,3,4,10,15,20,25};
+    int target = 3;
+
+    for(int i=0;i<N;i++){
+        if(arr[i]==target) System.out.println("찾았다"); 
+    }
+
+선형 탐색의 경우 배열의 크기인 O(N)만에 탐색을 할 수 있다.<br> 예시의 arr의 크기가 작아서 그렇지만, 만약 배열의 크기가 1억 10억 100억이 된다면? 또 컴퓨터는 괴로울 것이다.<br>
+이진탐색은 그 정의와 같게 반으로 나누어서 탐색한다.
+찾고자 하는 값: 3
+1. 중간 위치를 찾음: 배열의 중간은 4번째 위치에 있는 4
+2. 4 > 3이므로, 왼쪽 부분만 남김: [1, 2, 3]
+3. 다시 중간 위치를 찾음: 배열의 중간은 2번째 위치에 있는 2
+4. 2 < 3이므로, 오른쪽 부분만 남김: [3]
+5. 중간 위치를 찾음: 배열의 중간은 3
+6. 3 == 3 (찾고자 하는 값 발견)
+
+이렇게 반을 갈라가며 해답을 찾을 수 있다.
+<br>
+이진 탐색은 두가지 방법이 쓰인다. 같은 알고리즘이지만, 상황에 맞게 써야 하기 때문에 모두 설명할 예정이다.
+<br><br>
+우선, Lower Bound방식이다.<br>
+Lower Bound 이진 탐색은 배열에서 찾고자 하는 값 이상이 처음으로 나타나는 위치를 찾는 방식이다.<br> 
+이 방식은 배열 내에 찾고자 하는 값과 일치하는 값이 여러 개 있을 때, 그 중 가장 작은 인덱스를 찾는다.
+
+<br/>
+
+    public class BinarySearchLowerBound {
+        public static int lowerBound(int[] arr, int target) {
+            int L = 0;
+            int R = arr.length;
+
+            while (L < R) {
+                int mid =  (L + R) / 2;
+                if (arr[mid] < target) L = mid + 1;
+                else R = mid;
+            }
+            return L;
+        }
+
+        public static void main(String[] args) {
+            int[] array = {1, 2, 3, 4, 10, 15, 20, 25};
+            int target = 3;
+            int lowerIndex = lowerBound(array, target);
+            System.out.println("Lower Bound Index: " + lowerIndex);
+        }
+    }
+    
+
+위 코드를 진행한다면,<br>
+
+1. 처음 L은 0, R은 배열 크기인 8이기 때문에, mid = 4가 된다.
+2. 배열의 4번째 값은 10이고, 타겟은 3이기 때문에 R값이 mid가 된다(R=4)
+3. L은 0, R은 4이기 때문에 mid =2 이다.
+4. 배열의 2값은 3이고, target은 3이기 때문에 R값이 mid가 된다(R=2)
+5. L은 0, R은 2이기 때문에 mid =1 이다.
+6. 배열의 1값은 2이고 target은 3이기 때문에 L값이 mid+1이 된다(L=2)
+7. while문에 의해 break;되고, L인 2를 return 한다.
+
+이런 과정들로 인해 3의 바로 전인 index 2값을 얻을 수 있다.
+<br>
+다음은, Upper Bound방식이다.<br>
+Upper Bound 이진 탐색은 배열에서 찾고자 하는 값보다 큰 값이 처음으로 나타나는 위치를 찾는 방식이다. 
+<br> 
+이 방식은 배열 내에 찾고자 하는 값과 일치하는 값이 여러 개 있을 때, 그 중 가장 큰 인덱스를 찾는다.
+
+<br/>
+
+    public class BinarySearchUpperBound {
+        public static int upperBound(int[] arr, int target) {
+            int L = 0;
+            int R = arr.length;
+
+            while (L < R) {
+                int mid = L + (L + R) / 2;
+                if (arr[mid] <= target) L = mid + 1;
+                else R = mid;
+            }
+            return L;
+        }
+
+        public static void main(String[] args) {
+            int[] array = {1, 2, 3, 4, 10, 15, 20, 25};
+            int target = 3;
+
+            int upperIndex = upperBound(array, target);
+
+            System.out.println("Upper Bound Index: " + upperIndex);
+        }
+    }
+
+위 코드를 진행한다면,<br>
+
+1. 처음 L은 0, R은 배열 크기인 8이기 때문에, mid = 4가 된다.
+2. 배열의 4번째 값은 10이고, 타겟은 3이기 때문에 R값이 mid가 된다(R=4)
+3. L은 0, R은 4이기 때문에 mid =2 이다.
+4. 배열의 2값은 3이고, target은 3이기 때문에 L값이 mid+1가 된다(L=3)
+5. L은 3, R은 4이기 때문에 mid =3 이다.
+6. 배열의 3값은 4이고 target은 3이기 때문에 R값이 mid가 된다(R=3)
+7. while문에 의해 break;되고, L인 3을 return 한다. 
+
+Lower Bound와 Upper Bound를 활용하여 {1,2,3,4,10,15,20,25} 배열에서 3의 값은<br>
+Lower Bound의 2값, Upper Bound의 3값을 알 수 있다.<br>
+이 두 결과는 2의 경우 해당 해답을 포함하는 가장 작은 인덱스이고,<br>
+Upper Bound는 해당 해답을 포함하지 않는 바로 위의 값이다.<br>
+<br>
+이를 활용한 많은 문제들이 있지만, 가장 좋다고 생각하는 문제의 링크를 달려고 한다.<br>
+<a href="https://www.acmicpc.net/problem/2110">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223202965087">알고리즘 설명 및 풀이</a>
+
+
+😀정말 극한의 효율로 해답을 찾을 수 있는 알고리즘이다. 많은 기업에서 최근 많이 출제되는 유형이니 꼭 익숙해지도록 하자 :)
+</details>
+
+## <!--구분선-->
+
+<details>
+<summary>6. 그리디(Greedy)</summary>
+<h3>
+그리디 알고리즘(Greedy Algorithm)은 최적해를 구하기 위해 매 순간마다 가장 좋아 보이는 선택을 하는 알고리즘이다. 이 알고리즘은 각 단계에서 지금까지의 선택을 통해 최종적인 해답을 찾아내려고 하는 특징을 가지고 있다. 그리디 알고리즘은 각 선택이 지역적으로는 최적이지만, 그 선택들이 모여 전역적으로 최적이라는 보장은 없다.
+</h3>
+<details>
+<summary>기본 그리디</summary>
+        <div>
+        기본적인 그리디 문제를 예시로 설명을 하려고 한다.
+       </div>
+       <br>       
+Q : 만약, Nkg의 설탕을 5kg짜리 포대와 3kg짜리 포대로 운반해야 한다.<br>
+여기서 조건은 최대한 적은 수의 포대를 사용하는 것이다.<br>
+만약 8kg의 설탕을 운반하려면 3kg짜리 포대, 5kg자리 포대를 한개씩 써서 총 2개의 포대가 나올 것이다.<br>
+여기서 최대한 '탐욕'적으로 답을 도출해내려면 어떻게 해야할까?<br><br>
+바로 Nkg 설탕을 최대한 많은 5kg짜리 포대로 옮기면 가능하다!<br>
+그럼, 만약 9kg 설탕을 옮기려 한다면? 5kg를 쓸 수 없지만 3kg짜리 3개 포대로 운반이 가능하다.<br><br>
+이 문제를 그리디한 아이디어로 풀어내려면, 이 설탕 Nkg를 5kg의 배수가 될때까지 3kg의 포대로 옮기면 된다!
+<br/>
+
+    import java.util.*;
+    import java.io.*;
+    public class Main {
+        public static void main(String[] args) throws Exception {
+            BufferedReader br=  new BufferedReader(new InputStreamReader(System.in));
+            int N = Integer.parseInt(br.readLine());
+            int ans = 0;
+            while(0<N){
+                if(N%5==0) {
+                    ans += N/5;
+                    break;
+                }
+                N -= 3;
+                ans++;
+            }
+            System.out.println(N<0 ? -1 : ans);
+        }
+    }
+
+코드 자체가 굉장히 단순하다. N이 5kg의 배수가 되는 순간, 바로 5kg로 다 옮기고 return,<br> 
+그게 아니라면 N에서 3kg를 뺴준다.<br>
+만약 포대를 옮길 수 없다면 -1을 return해주면 된다.<br>
+
+😀그리디 알고리즘의 특징은 특정 알고리즘이 없다는 것이다. 아이디어를 많이 요구하는 만큼 재밌는 문제가 많다. :)
+
+
+</details>
+<details>
+<summary>정렬 그리디</summary>
+       <div>
+        기본적인 정렬 그리디 문제를 예시로 설명을 하려고 한다.
+       </div>
+       <br>
+Q : ATM을 사용하기 위해 사람들이 줄을 서있다.<br>
+각 사람들은 ATM을 사용하기 위한 시간이 각각 다르다<br>
+각각 사람들이 사용할 시간이 [3,2,1,5,6] 형태로 주어진다.<br>
+사람들 위치를 재배치시켜 모든 사람이 ATM을 사용하는 최단시간을 알아내려고 한다.<br>
+[3,2,1,5,6]일 경우, <br>
+첫번째 사람은 3분, 두번쨰 사람은 대기시간3+사용시간 2분<br>
+세번째 사람은 대기시간 5+사용시간1...<br>
+총 3 + 5 + 6 + 11 + 17 = 42시간이 걸리것이다. 최단시간을 구해보자.<br><br>
+
+이 문제의 경우 시간이 중첩되기 때문에 시간이 짧은 사람이 먼저 사용하게 하면 가장 짧은 시간을 구할 수 있다.<br>
+[1,2,3,5,6] 이렇게 정렬할 경우, 대기시간까지 계산하면<br>
+1 + 3 + 6 + 11 + 17 = 28로 가장 최적해를 구할 수 있다!
+
+
+    import java.util.*;
+    import java.io.*;
+
+    public class Main {
+        public static void main(String[] args) throws Exception{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            int N = Integer.parseInt(br.readLine());
+            int[]arr = new int[N];
+            StringTokenizer st = new StringTokenizer(br.readLine()," ");
+
+            for(int i=0;i<N;i++) arr[i] = Integer.parseInt(st.nextToken());
+            Arrays.sort(arr);
+            int answer = 0;
+            int tmp = 0;
+            for(int i=0;i<N;i++){
+            tmp += arr[i];
+            answer += tmp;
+            } 
+            System.out.println(answer);
+        }
+    }
+
+
+😀예시 문제들은 정말 기본적인 그리디 문제이다. 다양한 그리디 문제가 많고, 개발자로서의 두뇌를 말랑말랑하게 할 수 있는 알고리즘이니, 연습하면 너무 좋다 :)
+
+
+</details>
+</details>
