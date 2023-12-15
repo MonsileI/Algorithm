@@ -20,12 +20,15 @@
 
 - **알고리즘 별로 분류한다.**
 - **알고리즘이 여러가지 쓰이는 경우, ‘복합’ 패키지에 저장하고, 각 알고리즘 패키지에 한번 더 넣는다.**
+
   ```
    ex)        BFS + 비트마스킹의 경우, ‘복합’ 패키지에 저장, BFS와
               비트마스킹 패키지 모두에  저장
 
   ```
+
 - **Commit Message는 날짜, 푼 문제, 알고리즘 분류, 느낀점 순으로 기재한다.**
+
   ```
     ex)        2023-12-11 : 5문제
                알고리즘 : 1. 완전탐색 - 3문제
@@ -34,7 +37,9 @@
                느낀점 : 쉽지 않다. 조금 더 기본기를 쌓을 필요가 있다!
 
   ```
+
 - **문제풀이가 아닌 디렉토리 구조 변경, readMe 파일 변경, 설정 등 Commit의 경우 날짜, 제목, 내용순으로 한다.**
+
   ```
      ex)      2023-12-11 : Readme 파일 작성 및 파일 디렉토리 구조 설정
 
@@ -43,6 +48,7 @@
               정하였다.
 
   ```
+
 - **1일 1커밋! 단, Weekend엔 Backend도 쉽니다** 😊
 
 ---
@@ -103,7 +109,6 @@
         [3, 2]</br>
         총 6가지의 경우의 수가 나올 것이다.
 
-
     import java.util.Arrays;
     public class Main {
 
@@ -135,8 +140,6 @@
             }
         }
     }
-
-
 
 재귀 코드가 직관적이지 않을 수 있다.
 
@@ -171,7 +174,6 @@
         이처럼 조합은 순서가 중요하지 않다. 순열에서 [1,2]와[2,1]가 다른 값이었다면, 조합에선 같은 값으로 인식한다.
         </div>
 
-
     import java.util.Arrays;
     public class Main {
 
@@ -199,8 +201,6 @@
             }
         }
     }
-
-
 
 재귀 코드가 직관적이지 않을 수 있다.
 
@@ -233,7 +233,6 @@
         +1+1+1+1-1 = 3</br>
         총 5가지의 경우의 수가 나올 것이다.
 
-
     import java.util.Arrays;
     public class Main {
 
@@ -260,8 +259,6 @@
 
         }
     }
-
-
 
 순열, 조합보다는 코드가 단순하다.
 
@@ -296,7 +293,6 @@
                 2       3
               /    \      \
             4       5       6
-
 
 이런 트리가 있다면, DFS의 탐색은 1 -> 2 -> 4 -> 5 -> 3 -> 6 이다.
 
@@ -356,9 +352,6 @@
         }
     }
 
-
-
-
 😀가끔은 완전탐색이 좋을때가 있다:)
 
 </details>
@@ -379,7 +372,6 @@
                 2       3
               /    \      \
             4       5       6
-
 
 이런 트리가 있다면, DFS의 탐색은 1 -> 2 -> 3 -> 4 -> 5 -> 6 이다.
 
@@ -441,9 +433,6 @@
             graph.BFS(0);
         }
     }
-
-
-
 
 😀많은 경우에서 BFS가 DFS보다 탐색이 빠를 경우가 많다. 실생활에 DFS와 BFS가 쓰일만한 예시를 생각해보자:)
 
@@ -538,9 +527,6 @@
         }
     }
 
-
-
-
 😀최단거리는 정말 그래프의 꽃이다:)
 
 </details>
@@ -628,10 +614,6 @@
             System.out.println(ans);
         }
     }
-
-
-
-
 
 😀플로이드 와샬은 정말 직관적이고 단순한 코드가 크나큰 장점이다:)
 
@@ -1254,6 +1236,7 @@ DP를 활용하면 이렇게 짧은 연산으로 풀이할 수 있다.
 😀DP는 정말 많은 경우에 효율적으로 쓰인다. 이 레포지토리에는 다양한 DP 문제를 올릴 예정이다. :)
 
 </details>
+<details>
 <summary>Bottom Up</summary>
         <div>
         정의 : Bottom-Up 방식은 작은 부분 문제부터 시작하여 큰 전체 문제를 해결하는 방식으로 동작합니다. 이는 재귀적인 호출을 사용하지 않고 반복문을 통해 문제를 해결하는 특징을 갖고 있다.
@@ -1348,4 +1331,128 @@ Bottom Up 방식이 Top Down 방식에 비해 갖는 이점
 😀나는 Bottom Up 방식을 선호한다. 재귀 코드는 직관적이지 않은 경우가 많기 때문이다. :)
 
 </details>
+
+<details>
+<summary>LIS(Longest Increasing Subsequence)</summary>
+        <div>
+        정의 :주어진 수열에서 가장 긴 증가하는 부분 수열의 길이를 찾는 동적 계획법 기반의 알고리즘이다. 이 알고리즘은 수열의 순서를 유지하며, 원래 수열의 순서와 다른 위치에 있는 원소들로 이루어진 부분 수열 중에서 증가하는 순서로 구성된 가장 긴 부분 수열을 찾는다.
+        </div>
+        <br>
+만약, [1 , 2 , 5 , 2 , 3 , 6] 에서 LIS를 구해본다면,<br> 
+1. 우선 값을 구하는 DP 배열은 전부 1로 초기화한다.(자기 자신까지의 LIS는 1이기 때문에)<br>
+2. 바깥 loop를 돌고(i) , 안쪽 loop(j) 는 자기 자신 전 반복을 진행한다.for(j=0 ; j < i ; j ++ )<br>
+3. 만약, arr[j]값이 arr[i]값보다 작다면, 자기 자신보다 크기가 작기 때문에 LIS에 포함시켜야 할 것이다.<br>
+4. dp[j]+1이 큰지, 아니면 dp[i](지금까지 내가 갱신한 최장 수열 크기)가 큰지 비교 후 dp[i] 에 max값을 넣어준다<br>
+<br>
+코드로 간단하게 표현해보겠다.
+<br/>
+
+    public class Main {
+        public static void main(String[] args) throws Exception {
+            int[]arr = {1,2,5,2,3,6}
+            int N = arr.length
+            int[]dp = new int[N]; //답을 저장할 dp 배열
+            int max = 0;          //도출될 max(가장 긴 수열 길이) 값
+            for(int i=0;i<N;i++){
+                dp[i] = 1;        //나 자신을 1로 초기화
+                for(int j=0;j<i;j++){
+                    if(arr[j]<arr[i]){      //만약 j원소가 나 자신보다 작다면,
+                        dp[i] = Math.max(dp[i],dp[j]+1); //비교 후 max값을 넣어준다.
+                    }
+                }
+                max = Math.max(max,dp[i]);    //max값 갱신
+            }
+
+            System.out.println(max);
+
+        }
+    }
+
+! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.<br>
+<a href="https://www.acmicpc.net/problem/11053">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223293484121">알고리즘 설명 및 풀이</a>
+
+😀LIS는 기본적인 DP문제 중 하나이다. 아주 재밌으니 직접 풀이하는걸 강력 추천한다. :)
+
 </details>
+<details>
+<summary>Knapsack</summary>
+        <div>
+        정의 :Knapsack 알고리즘은 한정된 가방 용량 안에서 물건의 가치를 최대화하는 최적화 문제를 해결하는 알고리즘이다. 이 문제는 '가치'와 '무게'가 각각 주어진 여러 물건을 가방에 넣을 때, 가방의 용량을 초과하지 않으면서 최대 가치를 얻을 수 있는 물건들의 조합을 찾는 것을 목표로 한다.
+        </div>
+        <br>
+만약, 8kg을 담을 수 있는 가방이 있고, 각각 3kg 2kg 6kg 5kg 의 물건이 있다.<br>
+그리고 이 물건의 가치는 각각 3 2 6 7 이라고 해보자.<br>
+무게 w = [3,2,6,5]이고, 가치 v = [3,2,6,7]이다.<br>
+여기서 8kg으로 가장 큰 value를 얻을 수 있는 조합은 3kg과 5kg을 담은 가치 10이 될것이다.<br>
+<br>
+1. 우선 dp배열을 선언하는데, 각각 물건의 개수와 총 담을 수 있는 무게를 선언한다.<br>
+2. 이중 for문에서 바깥 for은 물건의 정보를 담고 있다.<br>
+3. 안쪽 for은 8kg까지 j를 0부터 늘려간다. <br>
+4. 여기가 핵심이다. 만약 j가 지금 물건의 무게보다 커진다면,<br>
+5. 이 물건 무게를 뺐을 때의 가치+지금 물건 가치 vs 그전에 가치를 비교하는 것이다.<br>
+    
+    즉, 3kg의 물건을 더했을때의 가치가 더 커지는지 아니면 없을때의 가치가 더 컸는지 비교하는 것이다.
+    지금 가방에 넣을 무게가 3kg이고, 1kg+3kg, 2kg+3kg ... 5kg+3kg (8kg 까지 넣을 수 있기 때문에)
+    가치를 비교했을때, 이 3kg짜리 물건을 넣는게 더 이득이면, 갱신해주는 간단한 알고리즘이다 :) 
+    
+    점화식은 dp[i][j] = Math.max(dp[i][j],dp[i-1][j-w]+w[j]); 가 된다.
+    여기서 dp[i-1][j-w]는 이 물건을 넣기전에 가방 상태에서의 3kg 전의 무게 + 3kg 물건의 가치가 된다.
+
+그림으로 쉽게 설명한 풀이가 링크에 있다. 참고하면 큰 도움이 될것이다 :)
+<br/>
+
+    import java.util.*;
+    import java.io.*;
+
+    public class Main {
+
+        public static void main(String[] args) throws Exception {
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            StringTokenizer st = new StringTokenizer(br.readLine()," ");
+            int answer = 0;
+
+            int N = Integer.parseInt(st.nextToken());
+            int K = Integer.parseInt(st.nextToken());
+
+            //dp 배열
+            int [][] dp;
+
+            int [] W = new int[N+1];
+            int [] V = new int[N+1];
+
+            //input
+            for(int i=1;i<N+1;i++) {
+                st = new StringTokenizer(br.readLine()," ");
+                W[i] = Integer.parseInt(st.nextToken());
+                V[i] = Integer.parseInt(st.nextToken());
+
+            }
+            //dp 선언
+            dp = new int[N+1][K+1];
+            for(int i=1;i<N+1;i++) { //물건 개수만큼 for
+                for(int j=1;j<K+1;j++) { //기준이 되는 무게만큼만 for
+                    dp[i][j] = dp[i-1][j]; //그전꺼 저장
+                    if(W[i]<=j) { //K까지 가는 j보다 자기 무게가 작다면
+                        dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-W[i]]+V[i]);
+                        //이전에 구한 가치 vs 남은 무게의 가치+지금 물건의 가치  중 큰 값
+                    }
+                }
+            }
+            answer = dp[N][K];
+            System.out.println(answer);
+
+        }
+    }
+
+! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.<br>
+<a href="https://www.acmicpc.net/problem/12865">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/222960926583">알고리즘 설명 및 풀이</a>
+
+😀Knapsack은 워낙 유명한 DP 문제이다. 반드시 숙지하도록 하자 :)
+
+</details>
+</details>
+
+## <!--구분선-->
