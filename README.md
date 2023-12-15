@@ -20,35 +20,29 @@
 
 - **알고리즘 별로 분류한다.**
 - **알고리즘이 여러가지 쓰이는 경우, ‘복합’ 패키지에 저장하고, 각 알고리즘 패키지에 한번 더 넣는다.**
-    
-    ```
-     ex)        BFS + 비트마스킹의 경우, ‘복합’ 패키지에 저장, BFS와 
-                비트마스킹 패키지 모두에  저장
-    
-    ```
-    
+  ```
+   ex)        BFS + 비트마스킹의 경우, ‘복합’ 패키지에 저장, BFS와
+              비트마스킹 패키지 모두에  저장
+
+  ```
 - **Commit Message는 날짜, 푼 문제, 알고리즘 분류, 느낀점 순으로 기재한다.**
-    
-    ```
-      ex)        2023-12-11 : 5문제
-                 알고리즘 : 1. 완전탐색 - 3문제
-                           2. 다익스트라 - 2문제
-    
-                 느낀점 : 쉽지 않다. 조금 더 기본기를 쌓을 필요가 있다!
-    
-    ```
-    
+  ```
+    ex)        2023-12-11 : 5문제
+               알고리즘 : 1. 완전탐색 - 3문제
+                         2. 다익스트라 - 2문제
+
+               느낀점 : 쉽지 않다. 조금 더 기본기를 쌓을 필요가 있다!
+
+  ```
 - **문제풀이가 아닌 디렉토리 구조 변경, readMe 파일 변경, 설정 등 Commit의 경우 날짜, 제목, 내용순으로 한다.**
-    
-    ```
-       ex)      2023-12-11 : Readme 파일 작성 및 파일 디렉토리 구조 설정
-    
-                알고리즘 정리 공간을 위한 첫번째 커밋 및 Readme 파일 작성,
-                파일  디렉토리 구조를 설
-                정하였다.
-    
-    ```
-    
+  ```
+     ex)      2023-12-11 : Readme 파일 작성 및 파일 디렉토리 구조 설정
+
+              알고리즘 정리 공간을 위한 첫번째 커밋 및 Readme 파일 작성,
+              파일  디렉토리 구조를 설
+              정하였다.
+
+  ```
 - **1일 1커밋! 단, Weekend엔 Backend도 쉽니다** 😊
 
 ---
@@ -57,29 +51,29 @@
 
 1. 순열, 조합, 부분집합
 2. 완전탐색 (Brute Force)
-    - DFS
-    - BFS
+   - DFS
+   - BFS
 3. 그래프 이론
-    - 다익스트라
-    - 플로이드 와샬
-    - 유니온파인드
-    - MST
-    - 위상정렬
-    - 벨만포드
+   - 다익스트라
+   - 플로이드 와샬
+   - 유니온파인드
+   - MST
+   - 위상정렬
+   - 벨만포드
 4. 문자열 관련 알고리즘
-    - LCS
-    - KMP
-    - Trie
+   - LCS
+   - KMP
+   - Trie
 5. DP
-    - LIS
-    - Knapsack
-    - Bottom Up
-    - Top Down
+   - Top Down
+   - Bottom Up
+   - LIS
+   - Knapsack
 6. 이진탐색 (Binary Search)
 7. Greedy
-    - 정렬 Greedy
+   - 정렬 Greedy
 8. 트리
-    - LCA
+   - LCA
 9. 비트마스킹
 10. 구현
 
@@ -108,11 +102,11 @@
         [3, 1]</br>
         [3, 2]</br>
         총 6가지의 경우의 수가 나올 것이다.
-        
+
 
     import java.util.Arrays;
     public class Main {
-    
+
         static int [] tmp;
         static boolean[]visited;
         static int[]arr;
@@ -141,22 +135,20 @@
             }
         }
     }
-       
-        
+
+
+
 재귀 코드가 직관적이지 않을 수 있다.
-        
+
 1. 천천히 살펴보면, 우선, perm의 코드를 돌며, visited[i]가 true인 값을 찾는다.
 
-
-2.  temp[0] = arr[0]을 넣어주고, true 처리를 해준다. perm()함수를 depth+1한 상태로 재귀한다.
+2. temp[0] = arr[0]을 넣어주고, true 처리를 해준다. perm()함수를 depth+1한 상태로 재귀한다.
 
 3. DFS 특성상, 가장 깊은 1,2가 tmp에 들어가는 순간, depth==M이 될 것이다. 그럼 tmp를 리턴한다.
 
 4. 그럼 마지막 for문 입장에서는 visited[i]가 false인 3을 tmp[depth]에 넣어주고, perm을 한다. 그럼 depth가 2가 되고, 1,3이 tmp가 되는 것이다.
 
-        
 😀재귀코드는 머리로 따라가기가 쉽지 않다. 플랫하게 생각하며 그림을 직접 그려보며 코드를 따라가면 누구나 이해할 수 있다!
-        
 
    </details>
     <details>
@@ -178,11 +170,11 @@
         <div>
         이처럼 조합은 순서가 중요하지 않다. 순열에서 [1,2]와[2,1]가 다른 값이었다면, 조합에선 같은 값으로 인식한다.
         </div>
-        
+
 
     import java.util.Arrays;
     public class Main {
-    
+
         static int [] tmp;
         static int[]arr;
         static int N; //배열의 길이
@@ -203,26 +195,24 @@
                 tmp[depth] = arr[i];
                 perm(depth+1,i+1);
                 visited[i] = false;
-                
+
             }
         }
     }
-       
-        
+
+
+
 재귀 코드가 직관적이지 않을 수 있다.
-        
-1. 천천히 살펴보면, 우선, comb() 메서드의 for문은 start값, 즉 i+1값으로 시작한다. 
 
+1. 천천히 살펴보면, 우선, comb() 메서드의 for문은 start값, 즉 i+1값으로 시작한다.
 
-2.  temp[0] = arr[0]을 넣어주고, comb()함수를 depth+1, start엔 i+1값 상태로 재귀한다.
+2. temp[0] = arr[0]을 넣어주고, comb()함수를 depth+1, start엔 i+1값 상태로 재귀한다.
 
 3. DFS 특성상, 가장 깊은 1,2가 tmp에 들어가는 순간, depth==M이 될 것이다. 그럼 tmp를 리턴한다.
 
 4. 그럼 마지막 for문 입장에서는 visited[i]가 false인 3을 tmp[depth]에 넣어주고, perm을 한다. 그럼 depth가 2가 되고, 1,3이 tmp가 되는 것이다.
 
-        
 😀재귀코드는 머리로 따라가기가 쉽지 않다. 플랫하게 생각하며 그림을 직접 그려보며 코드를 따라가면 누구나 이해할 수 있다!
-        
 
   </details>
     <details>
@@ -242,11 +232,11 @@
         +1+1+1-1+1 = 3</br>
         +1+1+1+1-1 = 3</br>
         총 5가지의 경우의 수가 나올 것이다.
-        
+
 
     import java.util.Arrays;
     public class Main {
-    
+
         static int[]arr;
         static int target;
         static int N;
@@ -255,7 +245,7 @@
             arr = new int[]{1,1,1,1,1}; //TEST CASE
             N = arr.length;
             target = 3; //이 예시에서는 설명에서와 같이 3이라는 목표값을 설정한다.
-            subset(0,0); 
+            subset(0,0);
             System.out.println(answer);
         }
         static void subset(int depth,int sum){
@@ -264,29 +254,27 @@
                 return;
             }
             int newSum = sum + arr[depth]; //기존 sum값에 원소 +
-            subset(depth+1,newSum); 
+            subset(depth+1,newSum);
             newSum = sum -arr[depth]; //기존 sum값에 원소 -
             subset(depth+1,newSum);
-            
+
         }
     }
-       
-        
+
+
+
 순열, 조합보다는 코드가 단순하다.
-        
+
 1. arr[0]부터 N까지 돌며, 어떤 sum값엔 원소를 더해주고, 어떤 sum값엔 원소를 빼주면서 재귀 함수를 호출한다.
 
+2. depth가 N, 즉 전체 원소를 다 돌았고, 목표로 했던 target number와 수가 같다면, answer을 +1 해준다.
 
-2.  depth가 N, 즉 전체 원소를 다 돌았고, 목표로 했던 target number와 수가 같다면, answer을 +1 해준다.
-        
 😀생각보다 많이 쓰이는 부분집합 코드이다.
-        
 
 </details>
 </details>
 
-<!--구분선-->
----
+## <!--구분선-->
 
 <details>
 <summary>2. 완전탐색</summary>
@@ -304,11 +292,11 @@
         </div>
 
                     1
-                   / \                      
+                   / \
                 2       3
               /    \      \
             4       5       6
-                       
+
 
 이런 트리가 있다면, DFS의 탐색은 1 -> 2 -> 4 -> 5 -> 3 -> 6 이다.
 
@@ -368,8 +356,9 @@
         }
     }
 
-       
-        
+
+
+
 😀가끔은 완전탐색이 좋을때가 있다:)
 
 </details>
@@ -386,11 +375,11 @@
         </div>
 
                     1
-                   / \                      
+                   / \
                 2       3
               /    \      \
             4       5       6
-                       
+
 
 이런 트리가 있다면, DFS의 탐색은 1 -> 2 -> 3 -> 4 -> 5 -> 6 이다.
 
@@ -453,14 +442,15 @@
         }
     }
 
-       
-        
+
+
+
 😀많은 경우에서 BFS가 DFS보다 탐색이 빠를 경우가 많다. 실생활에 DFS와 BFS가 쓰일만한 예시를 생각해보자:)
+
 </details>
 </details>
 
-<!--구분선-->
----
+## <!--구분선-->
 
 <details>
 <summary>3. 그래프 이론</summary>
@@ -484,11 +474,8 @@
 <br>
 
 ! 그래프 이론은 기본적으로 복잡한 이해를 바탕으로 해야되기 때문에, 문제와 링크를 첨부하겠다.<br>
-<a href="https://www.acmicpc.net/problem/1753">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223291444980">풀이</a> 
-
-
-
+<a href="https://www.acmicpc.net/problem/1753">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223291444980">풀이</a>
 
     import java.util.*;
     import java.io.*;
@@ -551,8 +538,9 @@
         }
     }
 
-       
-        
+
+
+
 😀최단거리는 정말 그래프의 꽃이다:)
 
 </details>
@@ -570,11 +558,8 @@
 <br>
 
 ! 그래프 이론은 기본적으로 복잡한 이해를 바탕으로 해야되기 때문에, 문제와 링크를 첨부하겠다.<br>
-<a href="https://www.acmicpc.net/problem/1389">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223291482081">알고리즘 설명 및 풀이</a> 
-
-
-
+<a href="https://www.acmicpc.net/problem/1389">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223291482081">알고리즘 설명 및 풀이</a>
 
     import java.util.*;
     import java.io.*;
@@ -594,7 +579,7 @@
         }
     }
 
-   
+
 
     import java.io.*;
     import java.util.*;
@@ -645,8 +630,9 @@
     }
 
 
-       
-        
+
+
+
 😀플로이드 와샬은 정말 직관적이고 단순한 코드가 크나큰 장점이다:)
 
 </details>
@@ -666,13 +652,9 @@
 <br>
 
 ! 그래프 이론은 기본적으로 복잡한 이해를 바탕으로 해야되기 때문에, 문제와 링크를 첨부하겠다.<br>
-<a href="https://www.acmicpc.net/problem/1717">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223291534547">알고리즘 설명 및 풀이</a> 
+<a href="https://www.acmicpc.net/problem/1717">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223291534547">알고리즘 설명 및 풀이</a>
 
-
-
-
-   
     import java.util.*;
     import java.io.*;
     public class Main {
@@ -719,6 +701,7 @@
 }
 
 😀유니온 파인드는 크루스칼 알고리즘에도 쓰이기 때문에 반드시 제대로 이해하고 넘어가야 한다:)
+
 </details>
 <details>
 <summary>최소스패닝트리(MST)</summary>
@@ -739,14 +722,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <br>
 
 ! 그래프 이론은 기본적으로 복잡한 이해를 바탕으로 해야되기 때문에, 문제와 링크를 첨부하겠다.<br>
-<a href="https://www.acmicpc.net/problem/1197">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223291567824">알고리즘 설명 및 풀이</a> 
-
-
-
-
-   
-    
+<a href="https://www.acmicpc.net/problem/1197">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223291567824">알고리즘 설명 및 풀이</a>
 
     import java.io.*;
     import java.util.*;
@@ -808,8 +785,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         }
     }
 
-
 😀크루스칼 알고리즘과 다익스트라의 차이 이해하기:)
+
 </details>
 
 <details>
@@ -835,9 +812,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <br>
 
 ! 그래프 이론은 기본적으로 복잡한 이해를 바탕으로 해야되기 때문에, 문제와 링크를 첨부하겠다.<br>
-<a href="https://www.acmicpc.net/problem/2252">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223291607241">알고리즘 설명 및 풀이</a> 
-
+<a href="https://www.acmicpc.net/problem/2252">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223291607241">알고리즘 설명 및 풀이</a>
 
     import java.io.BufferedReader;
     import java.io.InputStreamReader;
@@ -876,8 +852,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         }
     }
 
-
 😀위상정렬 알고리즘은 실생활에서도 많이 쓸 수 있을 것이다:)
+
 </details>
 
 <details>
@@ -893,9 +869,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <br>
 
 ! 그래프 이론은 기본적으로 복잡한 이해를 바탕으로 해야되기 때문에, 문제와 링크를 첨부하겠다.<br>
-<a href="https://www.acmicpc.net/problem/1865">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223291635211">알고리즘 설명 및 풀이</a> 
-
+<a href="https://www.acmicpc.net/problem/1865">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223291635211">알고리즘 설명 및 풀이</a>
 
     import java.io.BufferedReader;
     import java.io.InputStreamReader;
@@ -934,13 +909,13 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         }
     }
 
-
 😀벨만-포드를 이용하면 음수 가중치가 있는 최단거리도 구할 수 있다니! :)
+
 </details>
 </details>
 
-<!--구분선-->
----
+## <!--구분선-->
+
 <details>
 <summary>4. 문자열</summary>
 <h3>
@@ -963,7 +938,7 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
            A B C D E F
          A 1 1 1 1 1 1
          B 1 2 2 2 2 2
-         C 1 2 3 3 3 3 
+         C 1 2 3 3 3 3
          A 1 2 3 3 3 3
          D 1 2 3 4 4 4
 
@@ -976,8 +951,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <br/>
 
 ! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
-<a href="https://www.acmicpc.net/problem/9251">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223292673112">알고리즘 설명 및 풀이</a> 
+<a href="https://www.acmicpc.net/problem/9251">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223292673112">알고리즘 설명 및 풀이</a>
 
     import java.io.BufferedReader;
     import java.io.InputStreamReader;
@@ -1002,9 +977,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         }
     }
 
-
-
 😀문자열 알고리즘은 시간복잡도를 효율적으로 개선하기 위한 알고리즘들이 많다! :)
+
 </details>
 
 <details>
@@ -1023,28 +997,29 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         </div>
 
         A B A B A C 를 테이블로 설계하자면,
-        
-                          접두사이자 접미사인 최대 문자열 
+
+                          접두사이자 접미사인 최대 문자열
         A                             없음
         A B                           없음
-        A B A                          A    
+        A B A                          A
         A B A B                        AB
         A B A B C                     없음
 
         즉, 테이블은 [0,0,1,2,0]이 된다.
+
 이 테이블을 이용해서 설계하면 시간복잡도를 줄일 수 있다.
 
     문자열 : A B A B A B C
     패턴 : A B A B C [0,0,1,2,0]
-    
+
     1. 문자열을 기준 loop를 돌며, 문자열 index와 패턴 index를 비교하고, 같으면 패턴 index를 ++해준다.
-    
+
     2. A B A B 까지는 맞지만, 문자열 index 4인 'A'가 패턴 index 4인 'C'가 아니기 때문에 일치하지 않는다. (여기까지 패턴 index는 조건 1에 의해 4가 된다.)
-    
+
     3. 두 index 값이 다르기 때문에 패턴의 index값을 table[index-1]값으로 갱신, 즉 index가 4였기 때문에 테이블의 3 값인 2 값으로 갱신된다.
-    
-    4. 이때, 테이블에 들어있는 값이 일치하거나 패턴 index가 0보다 클때까지 (3번)을 반복하여 가능한 패턴을 찾아준다. 패턴의 2값은 'A'이다. 패턴'A'와 문자열의 4번째 값 'A'가 같기 때문에 한번의 반복문으로 찾을 수 있다. 
-    
+
+    4. 이때, 테이블에 들어있는 값이 일치하거나 패턴 index가 0보다 클때까지 (3번)을 반복하여 가능한 패턴을 찾아준다. 패턴의 2값은 'A'이다. 패턴'A'와 문자열의 4번째 값 'A'가 같기 때문에 한번의 반복문으로 찾을 수 있다.
+
     5. 패턴 2값은 'A'였고, 문자열 4번째 'A'는 일치하기 때문에 패턴 index를 +1 해준다. (index는 현재 3)
 
     6. 다음 문자열 index값인 5는 'B'이다. 현재 패턴 index인 3은 'B'이다. 일치하기 떄문에 패턴 index +1 해준다.
@@ -1056,8 +1031,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
 <br/>
 
 ! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
-<a href="https://www.acmicpc.net/problem/1786">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223292789507">알고리즘 설명 및 풀이</a> 
+<a href="https://www.acmicpc.net/problem/1786">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223292789507">알고리즘 설명 및 풀이</a>
 
     import java.util.*;
     import java.io.*;
@@ -1093,10 +1068,8 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
         }
     }
 
-
-
-
 😀KMP 알고리즘은 천천히 코드를 보며 흐름을 따라가고, 그림을 그려볼 필요가 있다 :)
+
 </details>
 
 <details>
@@ -1120,18 +1093,16 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
               / | \
              b  d  f
             /   |  
-           c    e    
+           c    e
 
-이런식으로 각각 알파벳에 map이 구성되고, 그 map에 하위 map이 구성되는 구조로 설계하는 것이다.<br> 
+이런식으로 각각 알파벳에 map이 구성되고, 그 map에 하위 map이 구성되는 구조로 설계하는 것이다.<br>
 최대한 상세하게 작성하려고 했지만, 링크에 좀 더 자세히 그림과 함께 설명해놓았다.
 
 <br/>
 
 ! 자세한 설명은 기본문제와 풀이 링크를 참고 해주세요.(제발)<br>
-<a href="https://www.acmicpc.net/problem/5052">문제</a><br> 
-<a href="https://blog.naver.com/hansaem900d/223216769925">알고리즘 설명 및 풀이</a> 
-
-
+<a href="https://www.acmicpc.net/problem/5052">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223216769925">알고리즘 설명 및 풀이</a>
 
     import java.io.*;
     import java.util.*;
@@ -1192,10 +1163,189 @@ O(nlog n)이므로 이 경우 O(Elog E)가 된다. 우선순위 큐를 사용한
       }
     }
 
-
 😀 Trie 알고리즘은 검색에 대한 인사이트를 얻을 수 있는 아주 좋은 알고리즘이다 :)
+
 </details>
 </details>
 
-<!--구분선-->
----
+## <!--구분선-->
+
+<details>
+<summary>5. DP(Dynamic Programming)</summary>
+<h3>
+동적 계획법(Dynamic Programming, DP)은 어떤 문제를 해결하는 알고리즘 설계 기법 중 하나이다. 이 기법은 큰 문제를 작은 부분 문제로 나누어 해결하고, 중복되는 부분 문제들의 해를 저장하며 효율적으로 문제를 해결하는 방법론을 가지고 있다.
+</h3>
+
+<details>
+<summary>Top Down</summary>
+        <div>
+        정의 : Top-Down 접근은 큰 문제를 해결하기 위해 재귀적으로 작은 부분 문제를 호출하면서 문제를 해결하는 방법이다. 이때 중복되는 부분 문제를 피하기 위해 Memoization이 사용된다.
+        </div>
+        <br>
+        주요 특징 : 1. 큰 문제를 해결하기 위해 작은 부분 문제 호출: 큰 문제를 해결하기 위해 필요한 부분 문제를 재귀적으로 호출한다.<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2. Memoization 사용: 중복되는 부분 문제의 결과를 저장하여 필요할 때 다시 사용합니다.<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3.재귀적 접근: 문제를 작은 단위로 나누어 해결하기 위해 재귀적인 호출을 사용합니다.<br>
+<br>
+예시 문제로 fibonacci 수열을 Top down으로 구현해 보겠다.
+<br/>
+
+    public class TopDownDP {
+
+        public static int fibonacci(int n, int[] dp) {
+
+            if (n <= 1) return n;     //n이 마지막 구간인 1에 도달하면 1 return;
+
+            //메모이제이션 되지 않았다면, n-1번째 피보나치 + n-2번째 피보나치를 n에 넣어줌
+            if (dp[n] == 0) {
+                dp[n] = fibonacci(n - 1, dp) + fibonacci(n - 2, dp);
+            }
+            //저장된 피보나치 return;
+            return dp[n];
+        }
+
+        public static void main(String[] args) {
+            int n = 6;   //n번째 피보나치 수열 return ( 0,1,1,2,3,5,8 ) -> index기준 6번째, 8
+            int[] dp = new int[n + 1];        //dp 선언
+
+            int result = fibonacci(n, dp);
+            System.out.println(result);       // Output: 8
+        }
+    }
+
+위 코드를 진행한다면,<br>
+
+1. 6이 fibonacci 재귀 함수에 들어간다.
+2. 아직 dp[6] 은 0이기 때문에, 5 , 4를 fibonacci 재귀 함수에 넣어준다.
+3. 5와 4도 동일한 방법에 의해 5는 4, 3 4는 3,2를 재귀 함수에 넣어준다.
+4. 3과 2도 각각 2,1 1,0을 넣어준다.
+5. 1과0은 각각 1과 0을 return해준다.
+6. 재귀적으로 2와 3은 각각 1과 2를 얻는다. 여기서 1은 이미 메모이제이션 되었기 때문에 한번만 수행한다.
+
+이런식으로 점차 재귀 되면서 구현될 수 있다. 가장 큰 장점은 메모이제이션으로 인해 이미 수행한 연산은 수행하지 않는다는 것이다.<br>
+
+                                        fib(5)
+                         ________________|________________
+                        |                                 |
+                    fib(4)                              fib(3)
+                  __|____                             ____|____
+                 |       |                           |         |
+               fib(3)  fib(2)                     fib(2)     fib(1)
+              __|___    / \                         / \
+             |     |  fib(1) fib(0)            fib(1) fib(0)
+           fib(2) fib(1)
+          / \
+     fib(1) fib(0)
+
+메모이제이션을 활용하지 않는다면 이 모든 연산을 다 수행해야 한다. 하지만,
+
+                  fib(5)
+                    |
+                   / \
+             fib(4)   fib(3)
+                / \
+            fib(3) fib(2)
+            / \
+        fib(2)  fib(1)
+        /  \
+    fib(1) fib(0)
+
+DP를 활용하면 이렇게 짧은 연산으로 풀이할 수 있다.
+
+😀DP는 정말 많은 경우에 효율적으로 쓰인다. 이 레포지토리에는 다양한 DP 문제를 올릴 예정이다. :)
+
+</details>
+<summary>Bottom Up</summary>
+        <div>
+        정의 : Bottom-Up 방식은 작은 부분 문제부터 시작하여 큰 전체 문제를 해결하는 방식으로 동작합니다. 이는 재귀적인 호출을 사용하지 않고 반복문을 통해 문제를 해결하는 특징을 갖고 있다.
+        </div>
+        <br>
+        주요 특징 : 1. 작은 부분 문제부터 해결: 먼저 가장 작은 크기의 부분 문제부터 시작하여 해결한다. 이 작은 문제들은 주어진 문제의 하위 문제들로 분해된다.<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2. Memoization 사용: 중복되는 부분 문제의 결과를 저장하여 필요할 때 다시 사용합니다.<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3.상향식(bottom-up) 구성: 작은 부분 문제들을 해결한 결과를 이용하여 큰 부분 문제들을 해결하는 방향으로 구성한다. 이를 통해 전체 문제의 최적해를 구할 수 있다.<br>
+<br>
+예시 문제로 fibonacci 수열을 Top down으로 구현해 보겠다.
+<br/>
+
+    public class BottomUpDP {
+
+    public static int fibonacci(int n) {
+        if (n <= 1) return n;
+
+        // Bottom-Up DP를 위한 배열 선언
+        int[] dp = new int[n + 1];
+
+        // 초기값 설정
+        dp[0] = 0;
+        dp[1] = 1;
+
+        // 작은 부분 문제부터 시작하여 큰 문제까지 해결
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        // 최종 결과 반환
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        int n = 6;   // n번째 피보나치 수열 return (0, 1, 1, 2, 3, 5, 8) -> index 기준 6번째, 8
+
+        int result = fibonacci(n);
+        System.out.println(result);  // Output: 8
+    }
+
+}
+
+위 코드를 진행한다면,<br>
+
+1. dp[2] 는 dp[i-1] (1) 과 dp[i-2] (2) 를 더한 값이 된다.
+2. for문을 진행하며 n까지 도달한다.
+
+이런식으로 for으로 구현한다. 가장 큰 장점은 메모이제이션으로 인해 이미 수행한 연산은 수행하지 않는다는 것이다.<br>
+
+                                        fib(5)
+                         ________________|________________
+                        |                                 |
+                    fib(4)                              fib(3)
+                  __|____                             ____|____
+                 |       |                           |         |
+               fib(3)  fib(2)                     fib(2)     fib(1)
+              __|___    / \                         / \
+             |     |  fib(1) fib(0)            fib(1) fib(0)
+           fib(2) fib(1)
+          / \
+     fib(1) fib(0)
+
+메모이제이션을 활용하지 않는다면 이 모든 연산을 다 수행해야 한다. 하지만,
+
+                  fib(5)
+                    |
+                   / \
+             fib(4)   fib(3)
+                / \
+            fib(3) fib(2)
+            / \
+        fib(2)  fib(1)
+        /  \
+    fib(1) fib(0)
+
+DP를 활용하면 이렇게 짧은 연산으로 풀이할 수 있다.
+
+Bottom Up 방식이 Top Down 방식에 비해 갖는 이점
+
+1. 재귀 호출의 오버헤드 회피: Top-Down 방식은 재귀 호출을 사용하며 이는 함수 호출 스택을 사용하게 된다. 반면에 Bottom-Up은 반복문을 통해 진행되므로, 함수 호출의 오버헤드를 피할 수 있다.
+
+2. 메모리 사용 효율성: Top-Down 방식에서는 재귀 호출에 따라 메모리에 함수 호출 스택이 쌓이게 되는데, 이는 메모리 사용량이 높아질 수 있다. Bottom-Up 방식은 반복문을 사용하며 필요한 부분만 계산하므로 메모리 사용이 효율적이다.
+
+3. 캐시 지역성 강화: Bottom-Up 방식은 작은 문제부터 차례로 해결하기 때문에 CPU의 캐시 지역성을 더 강화할 수 있습니다. 이로 인해 캐시 히트율이 높아져 성능 향상에 도움이 될 수 있다.
+
+4. 재귀 제한 우회: Top-Down 방식은 재귀 호출을 사용하며, 언어나 환경에 따라 재귀 호출 스택의 깊이에 제한이 있을 수 있다. Bottom-Up 방식은 이런 제한을 우회할 수 있다.
+
+5. 코드의 명확성: Bottom-Up 방식은 반복문을 사용하므로 코드가 명확하고 직관적이다. Top-Down 방식에서는 재귀적인 구조가 코드를 복잡하게 만들 수 있다.
+
+그러나 상황에 따라서는 Top-Down 방식이 특정 문제에 더 적합할 수 있다. 선택은 문제의 특성과 구현 세부사항에 따라 다를 수 있습니다.
+
+😀나는 Bottom Up 방식을 선호한다. 재귀 코드는 직관적이지 않은 경우가 많기 때문이다. :)
+
+</details>
+</details>
