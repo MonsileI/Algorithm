@@ -1,5 +1,4 @@
 package 전체문제.Third_2023_12_14;
-import java.util.*;
 import java.io.*;
 public class bj_11585_속타는저녁메뉴_Platinum_5 {
     public static void main(String[] args) throws Exception {

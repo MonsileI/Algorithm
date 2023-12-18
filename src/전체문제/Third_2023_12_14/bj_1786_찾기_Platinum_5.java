@@ -1,5 +1,4 @@
 package 전체문제.Third_2023_12_14;
-import java.util.*;
 import java.io.*;
 public class bj_1786_찾기_Platinum_5 {
     public static void main(String[] args) throws Exception{

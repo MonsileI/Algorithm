@@ -1,5 +1,4 @@
 package 전체문제.Second_2023_12_12;
-import java.util.*;
 
 public class pr_단체사진찍기_Level_2 {
 

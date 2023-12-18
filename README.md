@@ -76,12 +76,12 @@
    - LIS
    - Knapsack
 6. 이진탐색 (Binary Search)
-7. Greedy
-   - 정렬 Greedy
+7. 그리디(Greedy)
+   - 정렬 그리디
 8. 트리
    - LCA
 9. 비트마스킹
-
+   - 비트마스킹 활용
 
 ---
 
@@ -1471,12 +1471,13 @@ Bottom Up 방식이 Top Down 방식에 비해 갖는 이점
     int target = 3;
 
     for(int i=0;i<N;i++){
-        if(arr[i]==target) System.out.println("찾았다"); 
+        if(arr[i]==target) System.out.println("찾았다");
     }
 
 선형 탐색의 경우 배열의 크기인 O(N)만에 탐색을 할 수 있다.<br> 예시의 arr의 크기가 작아서 그렇지만, 만약 배열의 크기가 1억 10억 100억이 된다면? 또 컴퓨터는 괴로울 것이다.<br>
 이진탐색은 그 정의와 같게 반으로 나누어서 탐색한다.
 찾고자 하는 값: 3
+
 1. 중간 위치를 찾음: 배열의 중간은 4번째 위치에 있는 10
 2. 10 > 3이므로, 왼쪽 부분만 남김: [1, 2, 3, 4]
 3. 다시 중간 위치를 찾음: 배열의 중간은 2번째 위치에 있는 2
@@ -1488,9 +1489,11 @@ Bottom Up 방식이 Top Down 방식에 비해 갖는 이점
 <br>
 이진 탐색은 두가지 방법이 쓰인다. 같은 알고리즘이지만, 상황에 맞게 써야 하기 때문에 모두 설명할 예정이다.
 <br><br>
+
 ## <!--구분선-->
+
 우선, Lower Bound방식이다.<br>
-Lower Bound 이진 탐색은 배열에서 찾고자 하는 값 이상이 처음으로 나타나는 위치를 찾는 방식이다.<br> 
+Lower Bound 이진 탐색은 배열에서 찾고자 하는 값 이상이 처음으로 나타나는 위치를 찾는 방식이다.<br>
 이 방식은 배열 내에 찾고자 하는 값과 일치하는 값이 여러 개 있을 때, 그 중 가장 작은 인덱스를 찾는다.
 
 <br/>
@@ -1515,7 +1518,6 @@ Lower Bound 이진 탐색은 배열에서 찾고자 하는 값 이상이 처음�
             System.out.println("Lower Bound Index: " + lowerIndex);
         }
     }
-    
 
 위 코드를 진행한다면,<br>
 
@@ -1529,7 +1531,9 @@ Lower Bound 이진 탐색은 배열에서 찾고자 하는 값 이상이 처음�
 
 이런 과정들로 인해 3을 포함한 가장 작은 index인 2값을 얻을 수 있다.
 <br>
+
 ## <!--구분선-->
+
 <br>
 다음은, Upper Bound방식이다.<br>
 Upper Bound 이진 탐색은 배열에서 찾고자 하는 값보다 큰 값이 처음으로 나타나는 위치를 찾는 방식이다. 
@@ -1569,7 +1573,7 @@ Upper Bound 이진 탐색은 배열에서 찾고자 하는 값보다 큰 값이 
 4. 배열의 2값은 3이고, target은 3이기 때문에 L값이 mid+1가 된다(L=3)
 5. L은 3, R은 4이기 때문에 mid =3 이다.
 6. 배열의 3값은 4이고 target은 3이기 때문에 R값이 mid가 된다(R=3)
-7. while문에 의해 break;되고, L인 3을 return 한다. 
+7. while문에 의해 break;되고, L인 3을 return 한다.
 
 Lower Bound와 Upper Bound를 활용하여 {1,2,3,4,10,15,20,25} 배열에서 3의 값은<br>
 Lower Bound의 2값, Upper Bound의 3값을 알 수 있다.<br>
@@ -1580,8 +1584,8 @@ Upper Bound는 해당 해답을 포함하지 않는 바로 위의 값이다.<br>
 <a href="https://www.acmicpc.net/problem/2110">문제</a><br>
 <a href="https://blog.naver.com/hansaem900d/223202965087">알고리즘 설명 및 풀이</a>
 
-
 😀정말 극한의 효율로 해답을 찾을 수 있는 알고리즘이다. 많은 기업에서 최근 많이 출제되는 유형이니 꼭 익숙해지도록 하자 :)
+
 </details>
 
 ## <!--구분선-->
@@ -1625,12 +1629,11 @@ Q : 만약, Nkg의 설탕을 5kg짜리 포대와 3kg짜리 포대로 운반해�
         }
     }
 
-코드 자체가 굉장히 단순하다. N이 5kg의 배수가 되는 순간, 바로 5kg로 다 옮기고 return,<br> 
+코드 자체가 굉장히 단순하다. N이 5kg의 배수가 되는 순간, 바로 5kg로 다 옮기고 return,<br>
 그게 아니라면 N에서 3kg를 뺴준다.<br>
 만약 포대를 옮길 수 없다면 -1을 return해주면 된다.<br>
 
 😀그리디 알고리즘의 특징은 특정 알고리즘이 없다는 것이다. 아이디어를 많이 요구하는 만큼 재밌는 문제가 많다. :)
-
 
 </details>
 <details>
@@ -1652,7 +1655,6 @@ Q : ATM을 사용하기 위해 사람들이 줄을 서있다.<br>
 [1,2,3,5,6] 이렇게 정렬할 경우, 대기시간까지 계산하면<br>
 1 + 3 + 6 + 11 + 17 = 28로 가장 최적해를 구할 수 있다!
 
-
     import java.util.*;
     import java.io.*;
 
@@ -1670,14 +1672,399 @@ Q : ATM을 사용하기 위해 사람들이 줄을 서있다.<br>
             for(int i=0;i<N;i++){
             tmp += arr[i];
             answer += tmp;
-            } 
+            }
             System.out.println(answer);
         }
     }
 
-
 😀예시 문제들은 정말 기본적인 그리디 문제이다. 다양한 그리디 문제가 많고, 개발자로서의 두뇌를 말랑말랑하게 할 수 있는 알고리즘이니, 연습하면 너무 좋다 :)
 
+</details>
+</details>
+
+## <!--구분선-->
+
+<details>
+<summary>8. 트리</summary>
+<h3>
+일반적으로 특정 문제나 작업을 해결하기 위해 사용되는 알고리즘들을 나타내는 계층적 구조를 의미한다. 알고리즘 트리는 다양한 알고리즘들 간의 관계와 종속성을 시각적으로 나타내기 위해 사용된다.<br>
+
+</h3>
+<details>
+<summary>기본 트리</summary>
+<div>
+트리는 계층형 구조를 가진다. 각각 트리를 순회하는 방법은 전위 순회 (Preorder Traversal) , 중위 순회 (Inorder Traversal), 후위 순회 (Postorder Traversal)가 있다.
+</div>
+<br>
+<div>
+
+</div>
+<br>       
+    
+                          1
+                         /  \
+                        2    3
+                       / \  / \
+                      4   5 6  7
+위와 같은 구조를 가진 트리가 있을 때, <br>
+전위 순회 : 1 -> 2 -> 4 -> 5 -> 3 -> 6 -> 7 <br>
+중위 순회 : 4 -> 2 -> 5 -> 1 -> 6 -> 3 -> 7 <br>
+후위 순회 : 4 -> 5 -> 2 -> 6 -> 7 -> 3 -> 1 <br>
+와 같은 순서를 가진다. <br>
+트리를 만들고, 순회하는 기본적인 풀이이다.<br>
+<a href="https://www.acmicpc.net/problem/1991">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223179141604">알고리즘 설명 및 풀이</a>
+    
+    import java.util.*;
+    import java.io.*;
+    public class Main {
+
+        static class Node{
+            char head; Node left; Node right;
+            public Node(char head, Node left, Node right) {
+                this.head = head;
+                this.left = left;
+                this.right = right;
+            }
+
+        }
+        static Node root = new Node('A',null,null);
+        static StringBuilder sb;
+
+        public static void main(String[] args) throws Exception {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            int N = Integer.parseInt(br.readLine());
+            for(int i=0;i<N;i++){
+                String str = br.readLine();
+                char h = str.charAt(0);
+                char l = str.charAt(2);
+                char r = str.charAt(4);
+                insertNode(root,h,l,r);
+            }
+            sb = new StringBuilder();
+            preOrder(root);
+            sb.append("\n");
+            inOrder(root);
+            sb.append("\n");
+            postOrder(root);
+            System.out.println(sb.toString());
+        }
+        static void postOrder(Node tree){
+            if(tree==null) return;
+            postOrder(tree.left);
+            postOrder(tree.right);
+            sb.append(tree.head);
+        }
+        static void inOrder(Node tree){
+            if(tree==null) return;
+            inOrder(tree.left);
+            sb.append(tree.head);
+            inOrder(tree.right);
+        }
+        static void preOrder(Node tree){
+            if(tree==null) return;
+            sb.append(tree.head);
+            preOrder(tree.left);
+            preOrder(tree.right);
+        }
+
+        static void insertNode(Node tree, char head,char left,char right){
+            if(tree.head==head){
+                tree.left = (left == '.' ? null : new Node(left,null,null));
+                tree.right = (right == '.' ? null : new Node(right,null,null));
+            }else{
+                if(tree.left!=null) insertNode(tree.left,head,left,right);
+                if(tree.right!=null) insertNode(tree.right,head,left,right);
+            }
+        }
+    }
+
+😀그래프와 트리의 가장 큰 차이점은 사이클의 유무이다. 트리는 사이클이 없다:)
+
+</details>
+<details>
+<summary>LCA</summary>
+<div>
+LCA(Lowest Common Ancestor)는 주어진 두 노드 a,b의 최소 공통 조상을 찾는 알고리즘이다.
+</div>
+시간복잡도 : O(NM), 기본적인 LCA풀이는 시간 복잡도가 O(NM)이다. <br>
+dp나 세그먼트 트리를 활용하면 시간복잡도를 줄일 수 있다. (후에 업로드할 예정)
+<br>
+<br>
+<div>
+
+                          1
+                         /  \
+                        2    3
+                       / \  / \
+                      4   5 6  7
+                    /
+                   8
+
+위와 같은 트리가 있을때, 8과 5의 최소 공통 조상은 2가 될것이다.<br>
+이를 구하는 알고리즘이다.
+<a href="https://www.acmicpc.net/problem/11437">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223295957835">알고리즘 설명 및 풀이</a>
+
+        import java.io.*;
+        import java.util.*;
+
+        public class Main {
+        static List<Integer>[] list;
+        static int[]parent,depth;
+
+        public static void main(String[] args) throws Exception{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            int N = Integer.parseInt(br.readLine());
+            list = new ArrayList[N+1];
+            parent = new int[N+1];
+            depth = new int[N+1];
+            for(int i=1;i<N+1;i++)list[i] = new ArrayList<>();
+            StringTokenizer st= null;
+            for(int i=0;i<N-1;i++){
+                st = new StringTokenizer(br.readLine()," ");
+                int a= Integer.parseInt(st.nextToken());
+                int b= Integer.parseInt(st.nextToken());
+                list[a].add(b);
+                list[b].add(a);
+            }
+            make(1,1,0);
+            int M = Integer.parseInt(br.readLine());
+            StringBuilder sb = new StringBuilder();
+            for(int i=0;i<M;i++){
+                st = new StringTokenizer(br.readLine()," ");
+                int a= Integer.parseInt(st.nextToken());
+                int b= Integer.parseInt(st.nextToken());
+                sb.append(LCA(a,b)+"\n");
+            }
+            System.out.println(sb.toString());
+        }
+        static int LCA(int a,int b){
+            int aHegiht = depth[a];
+            int bHegiht = depth[b];
+
+            while(aHegiht > bHegiht) {
+                a = parent[a];
+                aHegiht--;
+            }
+
+            while(bHegiht > aHegiht) {
+                b = parent[b];
+                bHegiht--;
+            }
+
+            while(a!=b) {
+                a = parent[a];
+                b = parent[b];
+            }
+            return a;
+        }
+        static void make(int now,int height, int pa){
+            depth[now] = height;
+            parent[now] = pa;
+            for(int next : list[now]){
+                if(next != pa){
+                    make(next,height+1,now);
+                }
+            }
+        }
+    }
+
+</div>
+
+😀LCA를 활용한 공통조상 문제를 실생활에서 어떻게 쓰일지 고민해보자 :)
+
+</details>
+</details>
+
+## <!--구분선-->
+
+<details>
+<summary>9. 비트마스킹</summary>
+<h3>
+비트 마스킹은 이진수 비트(bit)를 사용하여 연산을 수행하는 기법이다.비트 연산자(AND, OR, XOR, NOT)를 사용하여 특정 비트 위치의 값을 설정하거나 확인하는 등 다양한 작업을 수행한다.<br><br>
+</h3>
+<div>
+AND 연산자 (&)<br>
+두 비트가 둘 다 1이면 결과가 1이 되며, result = a & b는 a와 b의 해당 비트가 둘 다 1일 때만 1이 되고, 아니면 0이 된다.
+<br><br>
+OR 연산자 (|)<br>
+두 비트 중에 하나 이상이 1이면 결과가 1이 되며, result = a | b는 a나 b 중에 하나라도 1이면 1이 되고, 둘 다 0이면 0이 된다.
+<br><br>
+XOR 연산자 (^)<br>
+두 비트가 서로 다르면 결과가 1이 되며, result = a ^ b는 a와 b의 해당 비트가 서로 다르면 1이 되고, 같으면 0이 된다.
+<br><br>
+NOT 연산자 (~)<br>
+비트를 반전시키는데, result = ~a는 a의 각 비트를 반전시키는 거야. 0은 1로, 1은 0으로 바뀌게 된다.
+<br><br>
+왼쪽 시프트 연산자 (<<)<br>
+특정 비트를 왼쪽으로 이동시켜, result = a << n은 a의 각 비트를 n만큼 왼쪽으로 이동시키게 된다. 오른쪽에는 0이 추가된다.
+<br><br>
+오른쪽 시프트 연산자 (>>)<br>
+특정 비트를 오른쪽으로 이동시켜, result = a >> n은 a의 각 비트를 n만큼 오른쪽으로 이동시키게 된다. 왼쪽에는 부호 비트와 동일한 값으로 채워지며, 같으면 0이 된다.
+</div>
+<div>
+이같은 특징을 활용하여 알고리즘을 해결할 수 있다.
+</div>
+<br>
+<details>
+<summary>기본 비트마스킹 문제</summary>
+<div>
+비트 마스크를 활용하여, 정보를 간단하게 표현할 수 있다.<br>
+가령, [1,2,3,4,5,6]의 배열에서, 각각의 숫자를 표현하자면<br>
+[1,2] , [2,3] 이런식으로 정보를 표현할 수도 있지만,<br>
+
+    숫자 index : 6 5 4 3 2 1 x
+                1 0 0 0 0 0 0 [6]
+                1 0 0 1 0 0 0 [6,3]
+                0 0 0 0 1 1 0 [2,1]
+
+이런식으로 2진수를 활용할 수도 있을 것이다!<br>
+
+##
+
+각 비트연산자 별로 설명해보겠다.<br>
+초기상태 flag는 공집합이다.
+
+1.  6을 추가하고 싶다 -> 0000000에서-> 1000000 이 될 것이고, 이를 연산자로 표현하면<br>
+    flag = flag | 1<<6 이 된다.
+
+            int flag = 0b1000000;
+            flag = flag | (1 << 6);
+            System.out.println(Integer.toBinaryString(flag)); //출력 : 1000000
+
+2.  다시 6을 빼고 싶다 -> 1000000에서 -> 0000000이 될 것이고, 이를 연산자로 표현하면<br>
+    flag = flag & ~(1 << 6)이 된다.
+
+            int flag = 0b1000000;
+            flag = flag & ~(1 << 6);
+            System.out.println(Integer.toBinaryString(flag)); //출력 0
+
+3.  6이 있다면 6을 빼고, 6이 없다면 6을 추가하고 싶다
+    0000000 -> 1000000 이 되고, 1000000 -> 0000000 이 될 것이다. <br>
+    이를 연산자로 표현하면 flag = flag ^ (1 << 6)이 된다.
+
+            int flag = 0b1000000;
+            flag = flag ^(1<<4);
+            System.out.println(Integer.toBinaryString(flag)); //출력  1010000;
+            flag = flag ^(1<<4);
+            System.out.println(Integer.toBinaryString(flag)); //출력  1000000;
+
+이를 응용해서 문제를 해결할 수 있다.
+
+</div>
+<br>
+<div>
+
+<a href="https://www.acmicpc.net/problem/11723">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223296002025">알고리즘 설명 및 풀이</a>
+
+    import java.util.*;
+    import java.io.*;
+    public class Main {
+        public static void main(String[] args) throws Exception{
+            BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+            int N = Integer.parseInt(br.readLine());
+            StringTokenizer st= null;
+            StringBuilder sb= new StringBuilder();
+            int flag = 0;
+            for(int i=0;i<N;i++){
+                st= new StringTokenizer(br.readLine()," ");
+                String act = st.nextToken();
+                if(act.equals("all")) flag = 2097150;
+                else if(act.equals("empty")) flag = 0;
+                else{
+                    int num = Integer.parseInt(st.nextToken());
+                    if(act.equals("add")) flag = flag | (1<<num);
+                    else if(act.equals("remove")) flag = flag & ~(1<<num);
+                    else if(act.equals("toggle"))  flag = (flag ^ (1<<num));
+                    else{
+                        if((flag&(1<<num))==0) sb.append(0);
+                        else sb.append(1);
+                        sb.append("\n");
+                    }
+                }
+            }
+            System.out.println(sb.toString());
+        }
+    }
+
+😀비트마스킹은 아주아주 빠르고 간결한 정보 전달이 가능하다는 강점이 있다 :)
+
+</details>
+<details>
+<summary>비트마스킹 응용</summary>
+<div>
+비트마스킹을 어떤 곳에 활용할 수 있는지에 대한 문제 풀이이다. 자세한 풀이는 블로그 링크를 첨부하겠다.
+</div>
+
+<a href="https://www.acmicpc.net/problem/1194">문제</a><br>
+<a href="https://blog.naver.com/hansaem900d/223296045298">알고리즘 설명 및 풀이</a>
+
+    import java.io.*;
+    import java.util.*;
+
+    public class Main {
+        public static void main(String[] args) throws Exception {
+            BufferedReader br=  new BufferedReader(new InputStreamReader(System.in));
+            StringTokenizer st= new StringTokenizer(br.readLine()," ");
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
+            char[][]map = new char[N][M];
+            int si = 0 ; int sj = 0;
+            for(int i=0;i<N;i++){
+                String str = br.readLine();
+                for(int j=0;j<M;j++){
+                    map[i][j] = str.charAt(j);
+                    if(map[i][j]=='0'){
+                        map[i][j] = '.';
+                        si = i ; sj = j;
+                    }
+                }
+            }
+            int[][]move = {{-1,0},{0,1},{1,0},{0,-1}};
+            boolean[][][]visited = new boolean[N][M][64]; //63가지 ABCDEF
+            Queue<int[]> q =new ArrayDeque<>();
+            q.offer(new int[]{si,sj,0,0});
+            int answer = -1;
+            while(!q.isEmpty()){
+                int []c = q.poll();
+                int i = c[0]; int j = c[1]; int key = c[2];int cnt = c[3];
+                if(map[i][j]=='1'){
+                    answer = cnt;
+                    break;
+                }
+                for(int d=0;d<4;d++){
+                    int ni = i + move[d][0];
+                    int nj = j + move[d][1];
+                    if(ni<0||nj<0||N-1<ni||M-1<nj) continue;
+                    if(map[ni][nj]=='#') continue;
+                    if(visited[ni][nj][key]) continue;
+                    //열쇠일 경우
+                    if('a'<=map[ni][nj]&&map[ni][nj]<='f'){
+                        int newKey = key | (1<<(map[ni][nj]-'a'));
+                        visited[ni][nj][newKey] = true;
+                        q.offer(new int[]{ni,nj,newKey,cnt+1});
+                        //문일 경우
+                    }else if('A'<=map[ni][nj]&&map[ni][nj]<='F'){
+                        if((key & (1<<map[ni][nj]-'A'))!=0){
+                            visited[ni][nj][key] = true;
+                            q.offer(new int[]{ni,nj,key,cnt+1});
+                        }
+                    }else {
+                        visited[ni][nj][key] = true;
+                        q.offer(new int[]{ni, nj, key, cnt + 1});
+                    }
+                }
+
+            }
+            System.out.println(answer);
+        }
+    }
+
+</div>
+
+😀비트 마스크를 이렇게 활용할 수 있다니 놀랍다 :)
 
 </details>
 </details>

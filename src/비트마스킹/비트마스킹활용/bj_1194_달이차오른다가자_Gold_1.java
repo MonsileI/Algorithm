@@ -1,4 +1,4 @@
-package 비트마스킹;
+package 비트마스킹.비트마스킹활용;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

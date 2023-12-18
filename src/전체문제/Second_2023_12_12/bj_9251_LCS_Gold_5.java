@@ -1,5 +1,4 @@
 package 전체문제.Second_2023_12_12;
-import java.util.*;
 import java.io.*;
 public class bj_9251_LCS_Gold_5 {
     public static void main(String[] args) throws Exception{
