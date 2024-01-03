@@ -1,4 +1,4 @@
-package 전체문제.Eleventh_2024_01_02;
+package 전체문제.Twelveth_2024_01_02;
 import java.util.*;
 import java.io.*;
 public class bj_19238_스타트택시_Gold_2 {

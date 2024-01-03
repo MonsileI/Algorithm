@@ -1,4 +1,4 @@
-package 전체문제.Eleventh_2024_01_02;
+package 전체문제.Twelveth_2024_01_02;
 
 import java.util.Arrays;
 
