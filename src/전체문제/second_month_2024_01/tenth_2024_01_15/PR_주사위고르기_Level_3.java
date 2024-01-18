@@ -34,7 +34,6 @@ public class PR_주사위고르기_Level_3 {
             listB = new ArrayList<>();
             comb2(0,listA,0,arrA);
             comb2(0,listB,0,arrB);
-            Collections.sort(listA);
             Collections.sort(listB);
 
             int sum = 0;
