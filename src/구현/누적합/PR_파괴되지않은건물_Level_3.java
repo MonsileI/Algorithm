@@ -1,4 +1,4 @@
-package 구현;
+package 구현.누적합;
 
 public class PR_파괴되지않은건물_Level_3 {
 
