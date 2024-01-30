@@ -1,4 +1,4 @@
-package 전체문제.second_month_2024_01.twelveth_2024_01_18;
+package 전체문제.second_month_2024_01.twelfth_2024_01_18;
 import java.util.*;
 import java.io.*;
 public class BJ_14923_미로탈출_Gold_4 {

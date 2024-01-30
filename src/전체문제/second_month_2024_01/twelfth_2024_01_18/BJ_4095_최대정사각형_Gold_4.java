@@ -1,4 +1,4 @@
-package 전체문제.second_month_2024_01.twelveth_2024_01_18;
+package 전체문제.second_month_2024_01.twelfth_2024_01_18;
 import java.util.*;
 import java.io.*;
 public class BJ_4095_최대정사각형_Gold_4 {

@@ -1,7 +1,6 @@
-package 전체문제.second_month_2024_01.nineth_2024_01_12;
+package 전체문제.second_month_2024_01.ninth_2024_01_12;
 import java.util.*;
 import java.io.*;
-import java.util.stream.DoubleStream;
 
 public class BJ_2146_다리만들기_Gold_3 {
 

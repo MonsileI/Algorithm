@@ -1,4 +1,4 @@
-package 전체문제.second_month_2024_01.nineth_2024_01_12;
+package 전체문제.second_month_2024_01.ninth_2024_01_12;
 import java.util.*;
 import java.io.*;
 public class BJ_1915_가장큰정사각형_Gold_4 {

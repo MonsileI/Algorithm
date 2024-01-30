@@ -1,4 +1,4 @@
-package 전체문제.second_month_2024_01.nineth_2024_01_12;
+package 전체문제.second_month_2024_01.ninth_2024_01_12;
 import java.util.*;
 public class PR_에어컨_Level_3 {
 
