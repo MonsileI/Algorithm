@@ -1,4 +1,4 @@
-package 전체문제.second_month_2024_01.eigth_2024_01_11;
+package 전체문제.second_month_2024_01.eighth_2024_01_11;
 import java.util.*;
 import java.io.*;
 public class BJ_2565_전깃줄_Gold_5 {
