@@ -1,4 +1,4 @@
-package 구현;
+package 구현.맵;
 
 import java.util.Arrays;
 import java.util.HashMap;

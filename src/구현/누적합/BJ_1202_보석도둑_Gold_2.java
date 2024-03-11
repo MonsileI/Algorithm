@@ -1,4 +1,4 @@
-package 구현;
+package 구현.누적합;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

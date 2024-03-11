@@ -1,4 +1,4 @@
-package 구현;
+package 구현.스택;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
- package 구현;
+ package 구현.스택;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
