@@ -23,7 +23,7 @@ public class PR_퍼즐조각채우기_Level_3 {
                 }
             }
         }
-        
+
         return answer;
     }
     static void bfs(int y,int x){
