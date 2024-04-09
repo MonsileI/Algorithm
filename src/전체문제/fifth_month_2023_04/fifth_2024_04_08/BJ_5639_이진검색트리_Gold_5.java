@@ -1,6 +1,5 @@
-package 전체문제.fifth_month_2023_04.fifth_2924_04_08;
+package 전체문제.fifth_month_2023_04.fifth_2024_04_08;
 
-import java.util.*;
 import java.io.*;
 public class BJ_5639_이진검색트리_Gold_5 {
     static class Node {
