@@ -1,6 +1,5 @@
 package 전체문제.fifth_month_2023_04.second_2024_04_02;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.io.*;
@@ -16,7 +15,7 @@ public class  BJ_4485_녹색옷입은애가젤다지_Gold_4 {
         }
 
         @Override
-        public int compareTo(@NotNull Node o) {
+        public int compareTo(Node o) {
             return cnt - o.cnt;
         }
     }

@@ -1,6 +1,5 @@
-package 전체문제.fifth_month_2023_04.twenteenth_2024_04_18;
+package 전체문제.fifth_month_2023_04.twelfth_2024_04_18;
 
-import java.util.*;
 import java.io.*;
 public class BJ_1380_귀걸이_Silver_5 {
     public static void main(String[] args) throws Exception {
