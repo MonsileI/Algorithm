@@ -1,6 +1,5 @@
-package 전체문제.fifth_month_2023_04.twenteenth_2024_04_29;
+package 전체문제.fifth_month_2023_04.twentieth_2024_04_29;
 
-import java.util.*;
 import java.io.*;
 public class BJ_2485_가로수_Silver_4 {
     public static void main(String[] args) throws Exception {
