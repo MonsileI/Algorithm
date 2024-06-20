@@ -2,7 +2,7 @@ package 전체문제.sixth_month_2024_05.ninteenth_2024_05_29;
 
 import java.util.*;
 import java.io.*;
-public class GR_DeadorArrive_Level_2 {
+public class BR_DeadorArrive_Level_2 {
     static class Car implements Comparable<Car>{
         int speed; int power; int idx;
 
