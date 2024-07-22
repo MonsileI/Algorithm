@@ -18,6 +18,7 @@ public class PR_가장많이받은선물_Level_1 {
             relations[f][s]++;
             total[f]++; total[s]--;
         }
+        System.out.println(map);
         int ans = 0;
         for(int i=0;i<N;i++){
             int tmp = 0;
