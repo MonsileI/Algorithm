@@ -1,4 +1,4 @@
-package 전체문제.eigth_month_2024_07.fist_2024_07_01;
+package 전체문제.eigth_month_2024_07.first_2024_07_01;
 
 import java.util.*;
 import java.io.*;

@@ -1,4 +1,4 @@
-package 전체문제.eigth_month_2024_07.fifth_2024_07_09;
+package 전체문제.eigth_month_2024_07.sixth_2024_07_09;
 import java.util.*;
 import java.io.*;
 public class BJ_10825_국영수_Silver_4 {
