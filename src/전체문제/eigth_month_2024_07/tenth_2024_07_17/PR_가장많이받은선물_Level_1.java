@@ -1,4 +1,4 @@
-package 전체문제.eigth_month_2024_07.ninth_2024_07_17;
+package 전체문제.eigth_month_2024_07.tenth_2024_07_17;
 import java.util.*;
 public class PR_가장많이받은선물_Level_1 {
 
