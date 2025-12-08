@@ -1,4 +1,4 @@
-package 전체문제2025.December;
+package 전체문제2025.December.First;
 
 import java.util.Arrays;
 
