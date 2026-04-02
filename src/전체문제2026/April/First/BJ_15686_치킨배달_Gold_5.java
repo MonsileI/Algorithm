@@ -1,4 +1,4 @@
-package 전체문제2026.April;
+package 전체문제2026.April.First;
 
 import java.util.*;
 import java.io.*;
