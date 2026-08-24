@@ -1,0 +1,63 @@
+package 전체문제2026.July.August.Sixteenth;
+
+import java.util.*;
+import java.io.*;
+public class GR_문제지배부_D3 {
+    static class Node implements Comparable<Node>{
+        int to; int weight;
+
+        public Node(int to, int weight) {
+            this.to = to;
+            this.weight = weight;
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return weight - o.weight;
+        }
+    }
+    static int N;
+    static int INF = 987654321;
+    static List<List<Node>> list;
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine()," ");
+        N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        int S = Integer.parseInt(br.readLine());
+        list = new ArrayList<>();
+        for(int i=0;i<N+1;i++) list.add(new ArrayList<>());
+        for(int i=0;i<M;i++){
+            st= new StringTokenizer(br.readLine()," ");
+            int from = Integer.parseInt(st.nextToken());
+            int to = Integer.parseInt(st.nextToken());
+            int weight = Integer.parseInt(st.nextToken());
+            list.get(from).add(new Node(to,weight));
+        }
+        int[]dist = dijk(S);
+        int answer = 0;
+        for(int i=1;i<=N;i++){
+            answer = Math.max(answer,dist[i]);
+        }
+        answer = answer == INF ? -1 : answer;
+        System.out.println(answer);
+    }
+    static int[] dijk(int start){
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        int[]dist = new int[N+1];
+        Arrays.fill(dist,INF);
+        dist[start] = 0;
+        pq.offer(new Node(start,0));
+        while(!pq.isEmpty()){
+            Node cur = pq.poll();
+            if(dist[cur.to] < cur.weight) continue;
+            for(Node next : list.get(cur.to)){
+                if(dist[next.to] > dist[cur.to] + next.weight){
+                    dist[next.to] = dist[cur.to] + next.weight;
+                    pq.offer(new Node(next.to,dist[next.to]));
+                }
+            }
+        }
+        return dist;
+    }
+}
